@@ -1,6 +1,6 @@
 if (process.env.NODE_ENV !== "production") {
   // @ts-ignore
-  require("dotenv").config();
+  require("dotenv").config({ path: ".env" });
 }
 
 // @ts-ignore
@@ -22,6 +22,7 @@ const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 
 const db = mongoose.connection;
