@@ -12,6 +12,7 @@ const expressLayouts = require("express-ejs-layouts");
 
 const indexRouter = require("./routes/index.js");
 const eventRouter = require("./routes/event_route");
+const informasiRouter = require("./routes/informasi_route");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -34,5 +35,6 @@ db.once("open", (error) => console.log("connected to mongoose"));
 //router
 app.use("/", indexRouter);
 app.use("/api", eventRouter);
+app.use("/api", informasiRouter);
 
 app.listen(process.env.PORT || 3000);
