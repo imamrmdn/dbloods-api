@@ -45,7 +45,7 @@ router.post("/informasi", async (req, res) => {
       tanggalDibuat,
     });
 
-    res.status(201).json(informasi);
+    res.status(201).json({ message: "berhasil menambah informasi kesehatan" });
   } catch (error) {
     res.status(500).json({ err });
   }
