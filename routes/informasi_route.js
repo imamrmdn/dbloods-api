@@ -51,4 +51,8 @@ router.post("/informasi", async (req, res) => {
   }
 });
 
+//put
+
+//delete
+
 module.exports = router;
