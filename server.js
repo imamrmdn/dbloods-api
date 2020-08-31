@@ -18,7 +18,7 @@ app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 app.use(express.static("public"));
-app.use(bodyparser({ extended: false }));
+app.use(bodyparser.urlencoded({ extended: false }));
 const mongoose = require("mongoose");
 // @ts-ignore
 mongoose.connect(process.env.DATABASE_URL, {
