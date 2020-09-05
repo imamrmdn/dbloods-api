@@ -122,6 +122,8 @@ router.delete("/stokdarah/:id", async (req, res) => {
       res.status(404).json({ message: "stok darah tidak ditemukan" });
       return;
     }
+
+    res.json({ message: "berhasil menghapus stok dirumah sakit" });
   } catch (_) {
     res.status(500).json({ message: "gagal menghapus" });
   }
