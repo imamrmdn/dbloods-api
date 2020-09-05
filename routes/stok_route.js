@@ -104,6 +104,7 @@ router.put("/stokdarah/:id", async (req, res) => {
     stok.gol_Bneg = gol_Bneg;
     stok.gol_Oneg = gol_Oneg;
     stok.gol_ABneg = gol_ABneg;
+    stok.updatedAt = updatedAt;
     await stok.save();
     res.json({ message: "berhasil mengupdate stok darah" });
   } catch (err) {
@@ -119,6 +120,7 @@ router.delete("/stokdarah/:id", async (req, res) => {
     const stok = await Stok.findByIdAndDelete(id);
     if (!stok) {
       res.status(404).json({ message: "stok darah tidak ditemukan" });
+      return;
     }
   } catch (_) {
     res.status(500).json({ message: "gagal menghapus" });
