@@ -52,7 +52,45 @@ router.post("/informasi", async (req, res) => {
 });
 
 //put
+router.put("/informasi/:id", async (req, res) => {
+  const { id } = req.params;
+  const { title, url, sumber, gambar, deskripsi, tanggalDibuat } = req.body;
+
+  try {
+    const informasi = await Informasi.findById(id);
+    if (!informasi) {
+      res.status(404).json({ message: "informasi kesehatan tidak ditemukan " });
+      return;
+    }
+
+    informasi.title = title;
+    informasi.url = url;
+    informasi.sumber = sumber;
+    informasi.gambar = gambar;
+    informasi.deskripsi = deskripsi;
+    informasi.tanggalDibuat = tanggalDibuat;
+    await informasi.save();
+    res.json({ message: "berhasil mengubah informasi kesehatan" });
+  } catch (err) {
+    res.status(500).json({ err });
+  }
+});
 
 //delete
+router.delete("/informasi/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const informasi = await Informasi.findByIdAndDelete(id);
+    if (!informasi) {
+      res.status(404).json({ message: "informasi tidak ditemukan " });
+      return;
+    }
+
+    res.json({ message: "berhasil menghapus informasi kesehatan" });
+  } catch (_) {
+    res.status(500).json({ message: "gagal menghapus informasi" });
+  }
+});
 
 module.exports = router;
