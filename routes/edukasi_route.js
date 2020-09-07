@@ -6,9 +6,10 @@ const Edukasi = require("../models/edukasi_model");
 router.get("/edukasi", async (req, res) => {
   try {
     const edukasi = await Edukasi.find();
+
     res.json(edukasi);
-  } catch (error) {
-    res.status(500).json({ error });
+  } catch (err) {
+    res.status(500).json({ err });
   }
 });
 
@@ -49,4 +50,6 @@ router.post("/edukasi", async (req, res) => {
 
 //put
 
-//delet
+//delete
+
+module.exports = router;
