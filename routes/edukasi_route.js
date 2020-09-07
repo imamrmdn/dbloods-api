@@ -51,5 +51,20 @@ router.post("/edukasi", async (req, res) => {
 //put
 
 //delete
+router.delete("/edukasi/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const edukasi = await Edukasi.findByIdAndDelete(id);
+    if (!edukasi) {
+      res.status(404).json({ message: "edukasi tidak ditemukan " });
+      return;
+    }
+
+    res.json({ message: "berhasil menghapus edukasi" });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
 
 module.exports = router;
