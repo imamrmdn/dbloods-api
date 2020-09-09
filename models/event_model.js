@@ -22,6 +22,9 @@ const eventSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  tanggalEvent: {
+    type: Date,
+  },
 });
 
 const Event = mongoose.model("Event", eventSchema);

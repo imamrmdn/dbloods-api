@@ -32,7 +32,7 @@ router.get("/event/:id", async (req, res) => {
 
 //post
 router.post("/event", async (req, res) => {
-  const { title, alamat, gambar, deskripsi } = req.body;
+  const { title, alamat, gambar, deskripsi, tanggalEvent } = req.body;
 
   try {
     const event = await Event.create({
@@ -40,6 +40,7 @@ router.post("/event", async (req, res) => {
       alamat,
       gambar,
       deskripsi,
+      tanggalEvent,
     });
 
     res.status(201).json(event);
@@ -51,7 +52,7 @@ router.post("/event", async (req, res) => {
 //put
 router.put("/event/:id", async (req, res) => {
   const { id } = req.params;
-  const { title, alamat, gambar, deskripsi } = req.body;
+  const { title, alamat, gambar, deskripsi, tanggalEvent } = req.body;
 
   try {
     const event = await Event.findById(id);
@@ -63,6 +64,7 @@ router.put("/event/:id", async (req, res) => {
     event.alamat = alamat;
     event.gambar = gambar;
     event.deskripsi = deskripsi;
+    event.tanggalEvent = tanggalEvent;
     await event.save();
     res.json(event);
   } catch (err) {
